@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUXENOVA - Luxury Redefined</title>
+  
+  <!-- Include Elegant Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Global Style */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      margin: 0 0 10px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    
+    /* Header and Navigation */
+    header {
+      background: rgba(255,255,255,0.50);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid #eee;
+    }
+    header .scrolled {
+	height: 50px;
+	background: rgba(255,255,255,0.20);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+      color: #D4AF37; /* Gold accent for luxury feel */
+      letter-spacing: 1px;
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+    }
+    .logo: hover {
+	color: yellow;
+    }
+    .tagline {
+	font-size: 0.8em;
+	font-style: italic;
+	color: #ddd;
+    }
+     /* Hamburger Menu for Mobile */
+    .hamburger {
+      display: none;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+    }
+    .hamburger .menu-text {
+      font-size: 1em;
+      color: #333;
+      margin-right: 8px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-size: 1em;
+      font-weight: 400;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+    .cta-button {
+      background-color: #D4AF37;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #b99a30;
+    }
+   
+/* Responsive Navigation for Mobile */
+@media (max-width: 768px) {
+      .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        display: none;
+        background: #fff;
+        position: absolute;
+        top: 60px; /* adjust if needed */
+        left: 0;
+        border-top: 1px solid #eee;
+      }
+      nav ul.open {
+        display: flex;
+      }
+      nav li {
+        margin: 10px 0;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://wallpapercave.com/wp/wp11076377.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width:100%;
+      height:100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+/* Hero content positioned relative so that we can move it on scroll */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+    .hero-content h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    
+    /* Smooth Transition for Text Elements in Sections */
+    section h1,
+    section h2,
+    section h3,
+    section p,
+    section a,
+    section li,
+    section span {
+      transition: transform 0.3s ease;
+    }
+    
+    /* Parallax Sections
+       Add the class "parallax" and data-speed attribute to any section you want to have a background parallax effect.
+       Note: The background image should be set in CSS or inline; white backgrounds will show little effect. */
+    section.parallax {
+      background-attachment: scroll;  /* Not "fixed"—we adjust this via JS for more control */
+      background-size: cover;
+      background-position: center center;
+    }
+    
+    /* Product Presentation Section */
+    .products {
+      padding: 60px 0;
+      background: #fff;  /* Use a different image or color if desired */
+    }
+    .products h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .products h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .product-item {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 40px;
+    }
+    .product-image {
+      flex: 1 1 50%;
+      min-width: 300px;
+    }
+    .product-details {
+      flex: 1 1 50%;
+      padding: 20px;
+    }
+    .product-details h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .product-details p {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    .product-details .btn {
+      display: inline-block;
+      background-color: #D4AF37;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    /* VIP and Exclusive Offers Section */
+    .vip-section {
+      padding: 60px 0;
+      background: #f8f8f8;  /* You could also add a subtle background image here */
+      text-align: center;
+    }
+    .vip-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .vip-section p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+    
+    /* Streamlined Checkout Section */
+    .checkout {
+      padding: 60px 0;
+      background: #fff;
+    }
+    .checkout h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .checkout form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .checkout input, 
+    .checkout select, 
+    .checkout button {
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .checkout button {
+      background-color: #D4AF37;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .checkout button:hover {
+      background-color: #b99a30;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 20px 0;
+      text-align: center;
+      background: rgba(255,255,255,0.60);
+      border-top: 1px solid #eee;
+      font-size: 0.9em;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav li {
+        margin: 10px 0;
+      }
+      .product-item {
+        flex-direction: column;
+      }
+      .product-image, .product-details {
+        flex: 1 1 100%;
+      }
+      .hero-content h1 {
+        font-size: 2.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header: Sticky Navigation and CTA -->
+  <header>
+ <!-- Header Section with Navigation -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">LUXENOVA</div>
+      <nav>
+        <!-- Hamburger Menu Button -->
+        <div class="hamburger" onclick="toggleNavigation(event)">
+          <span class="menu-text">Menu</span>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#new-arrivals">New Arrivals</a></li>
+          <li><a href="#vip">VIP Lounge</a></li>
+          <li><a href="#offers">Exclusive Offers</a></li>
+        </ul>
+      </nav>
+      <button class="cta-button">Shop Now</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Luxury Redefined</h1>
+      <p>Experience the essence of elegance and sophistication.</p>
+      <button class="cta-button">Discover More</button>
+    </div>
+</section>
+  <!-- Product Presentation Section -->
+  <section class="products container parallax" id="collections" data-speed="0.2">
+    <h1>Featured Collection</h1>
+    <!-- Product Item 1 -->
+    <div class="product-item">
+      <div class="product-image">
+        <img src="https://middle.ihomepage.app/030d86bfa47995e2f8d22f3cbc8bdc8d/1618d50e-589b51b9.png" alt="Signature Dress" style="width:100%; height:auto;">
+      </div>
+      <div class="product-details">
+        <h2>Signature Dress</h2>
+        <p>Crafted with meticulous detail and a modern flair, this dress epitomizes luxury. Its seamless blend of traditional tailoring and contemporary style sets a new standard in fashion.</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+    <!-- Product Item 2 -->
+    <div class="product-item">
+      <div class="product-image">
+        <img src="classic suit.jfif" alt="Classic Suit" style="width:100%; height:auto;">
+      </div>
+      <div class="product-details">
+        <h2>Classic Suit</h2>
+        <p>This suit merges modern tailoring with timeless elegance, offering versatility for any refined occasion.</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Lounge & Exclusive Offers Section -->
+  <section class="vip-section parallax" id="vip" data-speed="0.3">
+    <div class="container">
+      <h2>Join Our VIP Lounge</h2>
+      <p>Unlock exclusive offers, early access to collections, and personal styling sessions by joining our elite circle.</p>
+      <button class="cta-button">Become a VIP</button>
+    </div>
+  </section>
+
+  <!-- Streamlined Checkout Section -->
+  <section class="checkout container parallax" id="checkout" data-speed="0.2">
+    <h2>Streamlined Checkout</h2>
+    <form action="#" method="post">
+      <input type="text" name="fullname" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="address" placeholder="Shipping Address" required>
+      <select name="country" required>
+        <option value="">Select Country</option>
+        <option value="india">India</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+      </select>
+      <input type="text" name="card" placeholder="Card Number" required>
+      <input type="text" name="expiry" placeholder="Expiry Date (MM/YY)" required>
+      <input type="text" name="cvv" placeholder="CVV" required>
+      <button type="submit">Complete Purchase</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 LUXENOVA. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+ // Mobile Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navList").classList.toggle("active");
+    });
+
+    // Global scroll event handler to create a full-site parallax effect
+    window.addEventListener('scroll', function() {
+      const scrollPos = window.pageYOffset;
+      
+      // Update hero section effects (text movement and brightness)
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent) {
+        heroContent.style.transform = 'translateY(' + (-scrollPos * 0.5) + 'px)';
+      }
+      const heroSection = document.querySelector('.hero');
+      if (heroSection) {
+        const brightness = Math.max(0.7, 1 - scrollPos / 1000);
+        heroSection.style.filter = 'brightness(' + brightness + ')';
+      }
+      
+      // Apply parallax background effect to all sections with the "parallax" class (except the hero)
+      document.querySelectorAll('section.parallax:not(.hero)').forEach(function(section) {
+        const speed = parseFloat(section.getAttribute('data-speed')) || 0.2;
+        section.style.backgroundPositionY = -(scrollPos * speed) + 'px';
+      });
+      
+      // Apply a subtle upward movement to text across all sections (excluding hero)
+      document.querySelectorAll('section:not(.hero) h1, section:not(.hero) h2, section:not(.hero) h3, section:not(.hero) p, section:not(.hero) a, section:not(.hero) li, section:not(.hero) span')
+        .forEach(function(el) {
+          el.style.transform = 'translateY(' + (-scrollPos * 0.02) + 'px)';
+      });
+    });
+  </script>
+</body>
+</html>
