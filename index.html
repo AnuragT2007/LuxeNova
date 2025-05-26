@@ -1,14 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LUXENOVA - Luxury Redefined</title>
-  
-  <!-- Include Elegant Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Montserrat:wght@300;400;600&amp;display=swap" rel="stylesheet">
   <style>
     /* Reset & Base Styles */
     * {
@@ -50,8 +46,8 @@
       border-bottom: 1px solid #eee;
     }
     header .scrolled {
-	height: 50px;
-	background: rgba(255,255,255,0.20);
+        height: 50px;
+        background: rgba(255,255,255,0.20);
     }
     .nav-container {
       max-width: 1200px;
@@ -71,12 +67,12 @@
       flex-direction: column;
     }
     .logo: hover {
-	color: yellow;
+        color: yellow;
     }
     .tagline {
-	font-size: 0.8em;
-	font-style: italic;
-	color: #ddd;
+        font-size: 0.8em;
+        font-style: italic;
+        color: #ddd;
     }
      /* Hamburger Menu for Mobile */
     .hamburger {
@@ -127,8 +123,8 @@
       background-color: #b99a30;
     }
    
-/* Responsive Navigation for Mobile */
-@media (max-width: 768px) {
+  /* Responsive Navigation for Mobile */
+  @media (max-width: 768px) {
       .nav-container {
         flex-direction: row;
         justify-content: space-between;
@@ -177,7 +173,7 @@
       background: rgba(0,0,0,0.4);
       z-index: 1;
     }
-/* Hero content positioned relative so that we can move it on scroll */
+  /* Hero content positioned relative so that we can move it on scroll */
     .hero-content {
       position: relative;
       z-index: 2;
@@ -344,106 +340,90 @@
   </style>
 </head>
 <body>
-
-  <!-- Header: Sticky Navigation and CTA -->
-  <header>
- <!-- Header Section with Navigation -->
-  <header>
-    <div class="container nav-container">
-      <div class="logo">LUXENOVA</div>
-      <nav>
-        <!-- Hamburger Menu Button -->
-        <div class="hamburger" onclick="toggleNavigation(event)">
-          <span class="menu-text">Menu</span>
-          <div></div>
-          <div></div>
-          <div></div>
+    <header>
+      <div class="container nav-container">
+        <div class="logo">
+          LUXENOVA
         </div>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#collections">Collections</a></li>
-          <li><a href="#new-arrivals">New Arrivals</a></li>
-          <li><a href="#vip">VIP Lounge</a></li>
-          <li><a href="#offers">Exclusive Offers</a></li>
-        </ul>
-      </nav>
-      <button class="cta-button">Shop Now</button>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Luxury Redefined</h1>
-      <p>Experience the essence of elegance and sophistication.</p>
-      <button class="cta-button">Discover More</button>
-    </div>
-</section>
-  <!-- Product Presentation Section -->
-  <section class="products container parallax" id="collections" data-speed="0.2">
-    <h1>Featured Collection</h1>
-    <!-- Product Item 1 -->
-    <div class="product-item">
-      <div class="product-image">
-        <img src="https://middle.ihomepage.app/030d86bfa47995e2f8d22f3cbc8bdc8d/1618d50e-589b51b9.png" alt="Signature Dress" style="width:100%; height:auto;">
+        <nav>
+          <div class="hamburger" onclick="toggleNavigation(event)">
+            <span class="menu-text">Menu</span>
+          </div>
+          <ul>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#collections">Collections</a>
+            </li>
+            <li>
+              <a href="#new-arrivals">New Arrivals</a>
+            </li>
+            <li>
+              <a href="#vip">VIP Lounge</a>
+            </li>
+            <li>
+              <a href="#offers">Exclusive Offers</a>
+            </li>
+          </ul>
+        </nav><button class="cta-button">Shop Now</button>
       </div>
-      <div class="product-details">
-        <h2>Signature Dress</h2>
-        <p>Crafted with meticulous detail and a modern flair, this dress epitomizes luxury. Its seamless blend of traditional tailoring and contemporary style sets a new standard in fashion.</p>
-        <a href="#" class="btn">View Details</a>
+    </header>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Luxury Redefined</h1>
+        <p>Experience the essence of elegance and sophistication.</p><button class="cta-button">Discover More</button>
       </div>
-    </div>
-    <!-- Product Item 2 -->
-    <div class="product-item">
-      <div class="product-image">
-        <img src="classic suit.jfif" alt="Classic Suit" style="width:100%; height:auto;">
+    </section>
+    <section class="products container parallax" id="collections" data-speed="0.2">
+      <h1>Featured Collection</h1>
+      <div class="product-item">
+        <div class="product-image"><img src="Signature dress.png" alt="Signature Dress" style="width:100%; height:auto;"></div>
+        <div class="product-details">
+          <h2>Signature Dress</h2>
+          <p>Crafted with meticulous detail and a modern flair, this dress epitomizes luxury. Its seamless blend of traditional tailoring and contemporary style sets a new standard in fashion.</p><a href="#" class="btn">View Details</a>
+        </div>
       </div>
-      <div class="product-details">
-        <h2>Classic Suit</h2>
-        <p>This suit merges modern tailoring with timeless elegance, offering versatility for any refined occasion.</p>
-        <a href="#" class="btn">View Details</a>
+      <div class="product-item">
+        <div class="product-image"><img src="classic suit.jfif" alt="Classic Suit" style="width:100%; height:auto;"></div>
+        <div class="product-details">
+          <h2>Classic Suit</h2>
+          <p>This suit merges modern tailoring with timeless elegance, offering versatility for any refined occasion.</p><a href="#" class="btn">View Details</a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- VIP Lounge & Exclusive Offers Section -->
-  <section class="vip-section parallax" id="vip" data-speed="0.3">
-    <div class="container">
-      <h2>Join Our VIP Lounge</h2>
-      <p>Unlock exclusive offers, early access to collections, and personal styling sessions by joining our elite circle.</p>
-      <button class="cta-button">Become a VIP</button>
-    </div>
-  </section>
-
-  <!-- Streamlined Checkout Section -->
-  <section class="checkout container parallax" id="checkout" data-speed="0.2">
-    <h2>Streamlined Checkout</h2>
-    <form action="#" method="post">
-      <input type="text" name="fullname" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="text" name="address" placeholder="Shipping Address" required>
-      <select name="country" required>
-        <option value="">Select Country</option>
-        <option value="india">India</option>
-        <option value="usa">USA</option>
-        <option value="uk">UK</option>
-      </select>
-      <input type="text" name="card" placeholder="Card Number" required>
-      <input type="text" name="expiry" placeholder="Expiry Date (MM/YY)" required>
-      <input type="text" name="cvv" placeholder="CVV" required>
-      <button type="submit">Complete Purchase</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 LUXENOVA. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <script>
- // Mobile Menu Toggle
+    </section>
+    <section class="vip-section parallax" id="vip" data-speed="0.3">
+      <div class="container">
+        <h2>Join Our VIP Lounge</h2>
+        <p>Unlock exclusive offers, early access to collections, and personal styling sessions by joining our elite circle.</p><button class="cta-button">Become a VIP</button>
+      </div>
+    </section>
+    <section class="checkout container parallax" id="checkout" data-speed="0.2">
+      <h2>Streamlined Checkout</h2>
+      <form action="#" method="post">
+        <input type="text" name="fullname" placeholder="Full Name" required=""> <input type="email" name="email" placeholder="Email Address" required=""> <input type="text" name="address" placeholder="Shipping Address" required=""> <select name="country" required="">
+          <option value="">
+            Select Country
+          </option>
+          <option value="india">
+            India
+          </option>
+          <option value="usa">
+            USA
+          </option>
+          <option value="uk">
+            UK
+          </option>
+        </select> <input type="text" name="card" placeholder="Card Number" required=""> <input type="text" name="expiry" placeholder="Expiry Date (MM/YY)" required=""> <input type="text" name="cvv" placeholder="CVV" required=""> <button type="submit">Complete Purchase</button>
+      </form>
+    </section>
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 LUXENOVA. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script>
+    // Mobile Menu Toggle
     document.getElementById("menuToggle").addEventListener("click", function() {
       document.getElementById("navList").classList.toggle("active");
     });
@@ -475,6 +455,6 @@
           el.style.transform = 'translateY(' + (-scrollPos * 0.02) + 'px)';
       });
     });
-  </script>
+    </script>
 </body>
 </html>
