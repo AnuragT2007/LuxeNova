@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Dress</title>
+    <style>
+           /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 70px; /* for fixed header */
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.70);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+   header.scrolled {
+      height: 50px; /* Reduced height */
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .cta-button {
+      background-color: #D4AF37;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #b99a30;
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+      color: #D4AF37; /* Gold accent for luxury feel */
+      letter-spacing: 1px;
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+    }
+    /* Hover Effect for Logo */
+    .logo:hover {
+      color: yellow;
+    }
+
+    /* Hamburger Menu Toggle Button (Mobile Only) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+       /* Footer styles */
+        footer {
+           text-align: center;
+           padding: 10px;
+           transition: background-color 0.5s, color 0.5s;
+           background-color: rgba(255,255,255,.60);
+           padding: 10px 0;
+           margin-top: 20px;
+        }
+       /* Hyperlink styled as normal text */
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    /* Responsive Navigation for Mobile */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        position: absolute;
+        top: 70px; /* height of header */
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav li {
+        margin: 1rem 0;
+      }
+    }
+	/* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+	.container {
+            display: flex;
+	    flex-wrap: wrap;
+            width: 90%;
+            max-width: 1000px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+    /* Tributes Section */
+    .tributes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .tributes img {
+      flex: 1 1 300px;
+      width: 30%;
+      border-radius: 10px;
+    }
+    .tributes-content {
+      flex: 1 1 300px;
+    }
+        .dress-description {
+            font-size: 18px;
+            color: black;
+            line-height: 1.8;
+        }
+        .highlight {
+            color: green;
+            font-weight: bold;
+        }
+    /* Section Titles & Container */
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #4169E1;
+    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .price {
+            margin-top: 15px;
+            margin-left: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #e63946;
+            text-shadow: 0px 0px 10px gold;
+        }
+        .order-btn {
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 15px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, gold, #b8860b);
+            color: black;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 0px 15px gold;
+        }
+        .order-btn:hover {
+            background: gold;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 25px gold;
+        }
+        
+        /* Mobile adjustments */
+        @media (min-width: 600px) {
+            .container {
+                flex-wrap: nowrap;
+            }
+            .left-container {
+                width: 50%;
+            }
+            .right-container {
+                width: 50%;
+                text-align: left;
+            }
+        }
+        /* Responsive Fix for Laptops */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                width: 85%;
+            }
+            .left-container, .right-container {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+  <header>
+    <div class="nav-container">
+	<a href="index.html" class="logo">LUXENOVA</a>
+      <!-- Hamburger Menu Toggle for Mobile -->
+      <button class="menu-toggle" id="menuToggle">
+        Menu <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul id="navList">
+           <li><a href="#about">Home</a></li>
+          <li><a href="#varieties">Collections</a></li>
+	  <li><a href="#Symbolism">New Arrivals</a></li>
+         <li><a href="#Benefits">VIP Lounge</a></li>
+	 <li><a href="#facts">Exclusive Offers</a></li>
+        </ul>
+      </nav><button class="cta-button">Shop Now</button>
+    </div>
+  </header>
+
+  <!-- Signature dress Section -->
+  <section id="signature dress">
+    <div class="content tributes">
+            <img src="https://anuragt2007.github.io/LuxeNova/Signature%20dress.png" alt="Beautiful Dress">
+            <img src="C:\Users\Thakur\Desktop\LuxeNova\Signature Dress_back.jpeg" alt="Beautiful Dress">
+      <div class="tributes-content">
+	<h2 class="section-title">A Timeless Masterpiece of Elegance and Grace</h2>
+        <p class="dress-description">
+            This <span class="highlight">exquisite black evening gown</span> is the epitome of luxury, designed for those who appreciate fine craftsmanship and sophisticated style. 
+            The <span class="highlight">deep V-neckline</span> enhances the silhouette, exuding confidence and allure, while the <span class="highlight">long sheer sleeves</span> add a touch of delicate mystery. 
+            The intricate lace detailing at the cuffs and the <span class="highlight">embroidered bodice</span> create a mesmerizing visual harmony, drawing attention to the impeccable artistry that defines this dress. 
+            Flowing seamlessly into a <span class="highlight">floor-length skirt</span>, the layers of sheer fabric provide graceful movement, ensuring that every step feels like <span class="highlight">poetry in motion</span>. 
+            Whether it's a <span class="highlight">gala, an exclusive soirée, or a red carpet event</span>, this gown is designed to make an unforgettable statement—<span class="highlight">effortlessly elegant, undeniably elite.</span>
+        </p>
+	<div class="price">₹19,999</div>
+            <a href="#" class="order-btn">Place Order</a>
+      </div>
+    </div>
+  </section>
+
+    
+    <!-- Footer -->
+    <footer>
+       <p>&copy; 2025 <a href="index.html">LUXENOVA</a> | All Rights Reserved</p>
+    </footer>
+
+    <script>
+                // Smooth Scroll Function
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    // Add 'scrolled' class to header on scroll
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+// Back-to-Top Button Visibility
+    window.onscroll = function() {
+      const button = document.getElementById("backToTop");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Mobile Menu Toggle
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navList").classList.toggle("active");
+    });
+    </script>
+</body>
+</html>
