@@ -1,460 +1,873 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="evening">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LUXENOVA - Luxury Redefined</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Montserrat:wght@300;400;600&amp;display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUXENOVA — Luxury Redefined</title>
+  <meta name="description" content="LUXENOVA: A house of modern heirlooms. Mood-led curation, virtual fitting lounge, provenance stories, and a bespoke concierge."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
   <style>
-    /* Reset & Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    /* Global Style */
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      color: #333;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      margin: 0 0 10px;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
-    }
-    
-    /* Header and Navigation */
-    header {
-      background: rgba(255,255,255,0.50);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      border-bottom: 1px solid #eee;
-    }
-    header .scrolled {
-        height: 50px;
-        background: rgba(255,255,255,0.20);
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-    }
-    .logo {
-      font-size: 2em;
-      font-weight: bold;
-      color: #D4AF37; /* Gold accent for luxury feel */
-      letter-spacing: 1px;
-      display: flex;
-      text-decoration: none;
-      flex-direction: column;
-    }
-    .logo: hover {
-        color: yellow;
-    }
-    .tagline {
-        font-size: 0.8em;
-        font-style: italic;
-        color: #ddd;
-    }
-     /* Hamburger Menu for Mobile */
-    .hamburger {
-      display: none;
-      flex-direction: row;
-      align-items: center;
-      cursor: pointer;
-    }
-    .hamburger .menu-text {
-      font-size: 1em;
-      color: #333;
-      margin-right: 8px;
-    }
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background-color: #333;
-      margin: 4px 0;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-    }
-    nav li {
-      margin-left: 1.5rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: black;
-      font-size: 1em;
-      font-weight: 400;
-    }
-    nav a:hover {
-      color: var(--accent-color);
-    }
-    .cta-button {
-      background-color: #D4AF37;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .cta-button:hover {
-      background-color: #b99a30;
-    }
-   
-  /* Responsive Navigation for Mobile */
-  @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        display: none;
-        background: #fff;
-        position: absolute;
-        top: 60px; /* adjust if needed */
-        left: 0;
-        border-top: 1px solid #eee;
-      }
-      nav ul.open {
-        display: flex;
-      }
-      nav li {
-        margin: 10px 0;
-      }
-      .hamburger {
-        display: flex;
-      }
+    :root {
+      --accent: #D4AF37;
+      --accent-2: #E6C767;
+      --evening-bg: #0C0D0E;
+      --evening-surface: #131416;
+      --evening-text: #EDEDED;
+      --evening-muted: #A6A6A6;
+      --showroom-bg: #F7F6F3;
+      --showroom-surface: #FFFFFF;
+      --showroom-text: #1F1F1F;
+      --showroom-muted: #6B6B6B;
+      --line: rgba(255,255,255,.08);
+      --line-dark: rgba(0,0,0,.08);
+      --radius: 14px;
+      --transition: 220ms ease;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,.25);
     }
 
-    /* Hero Section */
+    /* Theme tokens */
+    [data-theme="evening"] {
+      --bg: var(--evening-bg);
+      --surface: var(--evening-surface);
+      --text: var(--evening-text);
+      --muted: var(--evening-muted);
+      --line-token: var(--line);
+    }
+    [data-theme="showroom"] {
+      --bg: var(--showroom-bg);
+      --surface: var(--showroom-surface);
+      --text: var(--showroom-text);
+      --muted: var(--showroom-muted);
+      --line-token: var(--line-dark);
+    }
+
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; margin: 0 0 .5rem; letter-spacing: .2px; }
+    p { margin: 0 0 1rem; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 1000;
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line-token);
+      transition: background .3s ease, transform .3s ease;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex; flex-direction: column; line-height: 1;
+      color: var(--accent);
+      letter-spacing: 1px; font-weight: 700; font-size: 22px;
+    }
+    .logo small { font-size: 11px; color: var(--muted); font-weight: 400; letter-spacing: .8px; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { font-weight: 500; color: var(--text); opacity: .9; }
+    .nav-links a:hover { opacity: 1; color: var(--accent); }
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 999px;
+      border: 1px solid var(--line-token);
+      background: color-mix(in oklab, var(--surface) 80%, transparent);
+      transition: transform var(--transition), background var(--transition);
+    }
+    .pill:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--surface) 90%, transparent); }
+    .hamburger { display: none; width: 26px; height: 18px; position: relative; cursor: pointer; }
+    .hamburger span, .hamburger::before, .hamburger::after {
+      content: ""; position: absolute; left: 0; right: 0; height: 2px; background: var(--text); border-radius: 1px; transition: transform .25s ease, opacity .25s ease;
+    }
+    .hamburger span { top: 8px; }
+    .hamburger::before { top: 0; }
+    .hamburger::after { bottom: 0; }
+    .mobile-menu { display: none; }
+
+    /* Hero (Cinematic Landing) */
     .hero {
-      background: url('https://wallpapercave.com/wp/wp11076377.jpg') no-repeat center center/cover;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-      position: relative;
+      position: relative; height: 100svh; overflow: hidden;
+      background: radial-gradient(1200px 600px at 70% 20%, rgba(212,175,55,.15), transparent 60%),
+                  linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.2)),
+                  url('assets/hero.jpg') center/cover no-repeat;
+      border-bottom: 1px solid var(--line-token);
     }
     .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      height:100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 1;
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(1200px 600px at 15% 80%, rgba(230,199,103,.08), transparent 60%);
+      mix-blend-mode: screen;
     }
-  /* Hero content positioned relative so that we can move it on scroll */
     .hero-content {
-      position: relative;
-      z-index: 2;
-      transition: transform 0.3s ease;
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      text-align: center; padding: 0 24px;
+      animation: fadeUp .8s ease both .2s;
     }
-    .hero-content h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
+    .hero h1 { font-size: clamp(36px, 6vw, 72px); letter-spacing: .6px; }
+    .hero p { font-size: clamp(14px, 2vw, 18px); color: var(--muted); margin-top: .8rem; }
+    .hero-ctas { margin-top: 1.4rem; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px 18px; border-radius: 999px; border: 1px solid var(--line-token);
+      background: color-mix(in oklab, var(--surface) 85%, transparent);
+      color: var(--text); font-weight: 600; transition: transform var(--transition), background var(--transition);
     }
-    .hero-content p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
+    .btn:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--surface) 95%, transparent); }
+    .btn.gold { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #1D1A12; border: none; }
+    .ambient-audio {
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px; opacity: .9;
     }
-    
-    /* Smooth Transition for Text Elements in Sections */
-    section h1,
-    section h2,
-    section h3,
-    section p,
-    section a,
-    section li,
-    section span {
-      transition: transform 0.3s ease;
+
+    /* Mood Navigation + Products */
+    .section { padding: 80px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+    .section-head p { color: var(--muted); }
+    .mood-nav { display: flex; flex-wrap: wrap; gap: 10px; }
+    .mood-filter[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .product {
+      grid-column: span 3; background: var(--surface); border: 1px solid var(--line-token); border-radius: var(--radius); overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease; position: relative;
     }
-    
-    /* Parallax Sections
-       Add the class "parallax" and data-speed attribute to any section you want to have a background parallax effect.
-       Note: The background image should be set in CSS or inline; white backgrounds will show little effect. */
-    section.parallax {
-      background-attachment: scroll;  /* Not "fixed"—we adjust this via JS for more control */
-      background-size: cover;
-      background-position: center center;
+    .product:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+    .product-media { position: relative; aspect-ratio: 4/5; overflow: hidden; }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1); transition: transform .6s ease; }
+    .product:hover .product-media img { transform: scale(1.08); }
+    .texture-zoom {
+      position: absolute; inset: auto 12px 12px auto; width: 84px; height: 84px; border-radius: 50%;
+      border: 1px solid var(--line-token); overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      transform: translateZ(0) scale(1); transition: transform .4s ease, opacity .4s ease; opacity: 0;
     }
-    
-    /* Product Presentation Section */
-    .products {
-      padding: 60px 0;
-      background: #fff;  /* Use a different image or color if desired */
+    .product:hover .texture-zoom { opacity: 1; transform: scale(1.02); }
+    .texture-zoom img { width: 160%; height: 160%; object-fit: cover; transform: translate(-20%, -20%) scale(1.1); }
+    .product-body { padding: 14px; }
+    .product-title { font-weight: 600; }
+    .product-meta { color: var(--muted); font-size: 13px; }
+    @media (max-width: 1100px) { .product { grid-column: span 4; } }
+    @media (max-width: 700px) { .product { grid-column: span 6; } }
+    @media (max-width: 520px) { .product { grid-column: span 12; } }
+
+    /* Virtual Fitting Lounge */
+    .fitting {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px;
+      background: var(--surface); border: 1px solid var(--line-token); border-radius: var(--radius); padding: 20px;
     }
-    .products h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-      text-align: center;
+    .fitting-viewport {
+      position: relative; min-height: 420px; border-radius: calc(var(--radius) - 6px);
+      background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.1)), url('assets/fitting-bg.jpg') center/cover no-repeat;
+      overflow: hidden;
     }
-    .products h2 {
-      text-align: center;
-      margin-bottom: 40px;
+    .mannequin {
+      position: absolute; inset: 0; display: grid; place-items: center;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.4));
     }
-    .product-item {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 40px;
+    .mannequin img { width: min(65%, 420px); max-width: 90%; transition: filter .25s ease, transform .25s ease; }
+    .fit-controls { display: grid; gap: 12px; align-content: start; }
+    .control { display: grid; gap: 6px; }
+    .segmented {
+      display: grid; grid-auto-flow: column; gap: 8px;
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border: 1px solid var(--line-token); border-radius: 999px; padding: 5px;
     }
-    .product-image {
-      flex: 1 1 50%;
-      min-width: 300px;
+    .segmented button {
+      border: none; background: transparent; color: var(--text); font-weight: 600; padding: 8px 12px; border-radius: 999px; cursor: pointer;
     }
-    .product-details {
-      flex: 1 1 50%;
-      padding: 20px;
+    .segmented button[aria-pressed="true"] { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #1E1A12; }
+    .pairings { border-top: 1px dashed var(--line-token); padding-top: 10px; color: var(--muted); font-size: 14px; }
+
+    /* Fragrance Simulation (Sillage) */
+    .sillage {
+      position: relative; overflow: hidden; border: 1px solid var(--line-token); border-radius: var(--radius);
+      background: radial-gradient(800px 400px at 20% 30%, rgba(212,175,55,.12), transparent 60%), var(--surface);
+      padding: 28px;
     }
-    .product-details h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
+    .scent-orbs { position: absolute; inset: 0; pointer-events: none; }
+    .orb {
+      position: absolute; width: 16px; height: 16px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #FFF7D6, #C8A544, rgba(0,0,0,0) 70%);
+      filter: blur(1px); opacity: .0; animation: float 9s ease-in-out infinite;
     }
-    .product-details p {
-      font-size: 1em;
-      margin-bottom: 20px;
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0) scale(.9); opacity: 0; }
+      20% { opacity: .45; }
+      50% { transform: translateY(-60px) translateX(20px) scale(1.1); opacity: .3; }
+      100% { transform: translateY(0) translateX(0) scale(.9); opacity: 0; }
     }
-    .product-details .btn {
-      display: inline-block;
-      background-color: #D4AF37;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-transform: uppercase;
-      font-weight: 600;
+
+    /* Editorial: Journal + Provenance */
+    .cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card {
+      grid-column: span 4; border: 1px solid var(--line-token); border-radius: var(--radius); background: var(--surface);
+      overflow: hidden; transition: transform .25s ease, box-shadow .25s ease;
     }
-    
-    /* VIP and Exclusive Offers Section */
-    .vip-section {
-      padding: 60px 0;
-      background: #f8f8f8;  /* You could also add a subtle background image here */
-      text-align: center;
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+    .card-media { aspect-ratio: 16/9; background: #222; }
+    .card-body { padding: 14px; }
+    @media (max-width: 1024px){ .card { grid-column: span 6; } }
+    @media (max-width: 640px){ .card { grid-column: span 12; } }
+
+    /* Visual Essay (Scroll narrative) */
+    .essay {
+      position: relative; min-height: 120vh; border: 1px solid var(--line-token); border-radius: var(--radius);
+      overflow: clip; background: #000;
     }
-    .vip-section h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+    .essay video, .essay .backdrop {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6; filter: saturate(.8) contrast(1.1);
     }
-    .vip-section p {
-      font-size: 1.1em;
-      margin-bottom: 30px;
+    .essay-steps {
+      position: relative; display: grid; gap: 18px; padding: 24px; max-width: 680px; margin: 0 auto; z-index: 2;
     }
-    
-    /* Streamlined Checkout Section */
-    .checkout {
-      padding: 60px 0;
-      background: #fff;
+    .step { opacity: .3; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+    .step.is-active { opacity: 1; transform: translateY(0); }
+
+    /* VIP + RSVP + Checkout */
+    .panel {
+      border: 1px solid var(--line-token); border-radius: var(--radius);
+      background: var(--surface); padding: 20px;
     }
-    .checkout h2 {
-      text-align: center;
-      margin-bottom: 40px;
+    .form { display: grid; gap: 10px; }
+    .form input, .form select, .form textarea {
+      width: 100%; padding: 12px 12px; border-radius: 10px; border: 1px solid var(--line-token);
+      background: color-mix(in oklab, var(--bg) 75%, transparent); color: var(--text);
     }
-    .checkout form {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
+    .form button { justify-self: start; }
+    .hint { color: var(--muted); font-size: 13px; }
+
+    /* Concierge (floating) */
+    .concierge-btn {
+      position: fixed; right: 16px; bottom: 16px; z-index: 1200;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #1E1A12;
+      border: none; border-radius: 999px; padding: 12px 16px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-soft);
     }
-    .checkout input, 
-    .checkout select, 
-    .checkout button {
-      padding: 15px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1em;
+    .concierge {
+      position: fixed; right: 16px; bottom: 72px; z-index: 1200; width: min(380px, 92vw);
+      border: 1px solid var(--line-token); border-radius: 16px; overflow: hidden; display: none;
+      background: var(--surface); box-shadow: var(--shadow-soft);
     }
-    .checkout button {
-      background-color: #D4AF37;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
+    .concierge header { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: color-mix(in oklab, var(--bg) 75%, transparent); }
+    .chat { max-height: 340px; overflow: auto; display: grid; gap: 8px; padding: 12px; }
+    .bubble {
+      max-width: 80%; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line-token);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
     }
-    .checkout button:hover {
-      background-color: #b99a30;
-    }
-    
+    .bubble.me { justify-self: end; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #1E1A12; border: none; }
+    .chat-input { display: flex; gap: 8px; padding: 10px; border-top: 1px solid var(--line-token); }
+    .chat-input input { flex: 1; padding: 10px; border-radius: 999px; border: 1px solid var(--line-token); background: transparent; color: var(--text); }
+
     /* Footer */
-    footer {
-      padding: 20px 0;
-      text-align: center;
-      background: rgba(255,255,255,0.60);
-      border-top: 1px solid #eee;
-      font-size: 0.9em;
+    footer { border-top: 1px solid var(--line-token); padding: 24px 0; color: var(--muted); }
+
+    /* Cursor shimmer */
+    .cursor-shimmer {
+      position: fixed; pointer-events: none; width: 12px; height: 12px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #FFF3C2, #D4AF37, transparent 70%);
+      filter: blur(.3px); opacity: .0; transform: translate(-50%, -50%) scale(1);
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 1300;
     }
-    
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
+
+    /* Animations */
+    @keyframes fadeUp { from{ opacity:0; transform: translateY(8px);} to{ opacity:1; transform:none;} }
+
+    /* Utilities */
+    .spacer-xs { height: 6px; } .spacer-s { height: 12px; } .spacer-m { height: 20px; } .spacer-l { height: 32px; } .spacer-xl { height: 48px; }
+    .muted { color: var(--muted); }
+    .tag { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid var(--line-token); border-radius:999px; font-size:12px; color:var(--muted); }
+    .gold { color: var(--accent); }
+
+    /* Mobile */
+    @media (max-width: 920px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .mobile-menu {
+        display: grid; gap: 10px; padding: 12px; border-top: 1px solid var(--line-token);
+        background: color-mix(in oklab, var(--bg) 85%, transparent);
       }
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav li {
-        margin: 10px 0;
-      }
-      .product-item {
-        flex-direction: column;
-      }
-      .product-image, .product-details {
-        flex: 1 1 100%;
-      }
-      .hero-content h1 {
-        font-size: 2.5em;
-      }
+      .fitting { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-    <header>
-      <div class="container nav-container">
-        <div class="logo">
-          LUXENOVA
+  <!-- Cursor shimmer -->
+  <div class="cursor-shimmer" id="cursorShimmer"></div>
+
+  <!-- Header -->
+  <header id="hdr">
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="LUXENOVA Home">
+        LUXENOVA
+        <small>Luxury Redefined</small>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#moods">Moods</a>
+        <a href="#fitting">Fitting Lounge</a>
+        <a href="#journal">Journal</a>
+        <a href="#provenance">Provenance</a>
+        <a href="#vip">VIP</a>
+        <a href="#rsvp" class="pill">Trunk Show</a>
+        <a href="#checkout">Checkout</a>
+        <button id="modeToggle" class="pill" aria-pressed="false" title="Toggle ambient light">Showroom Light</button>
+      </nav>
+      <div id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu container" hidden>
+      <a href="#moods">Moods</a>
+      <a href="#fitting">Fitting Lounge</a>
+      <a href="#journal">Journal</a>
+      <a href="#provenance">Provenance</a>
+      <a href="#vip">VIP</a>
+      <a href="#rsvp">Trunk Show</a>
+      <a href="#checkout">Checkout</a>
+      <button id="modeToggleMobile" class="pill" aria-pressed="false">Showroom Light</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="hero-content container">
+      <div>
+        <span class="tag"><span>●</span> Edition 01</span>
+        <h1>Modern heirlooms for the patient eye.</h1>
+        <p>A quiet opulence—tailored silhouettes, restrained palettes, and textures that breathe against the skin.</p>
+        <div class="hero-ctas">
+          <a href="#moods" class="btn gold">Explore by Mood</a>
+          <a href="#fitting" class="btn">Virtual Fitting Lounge</a>
         </div>
-        <nav>
-          <div class="hamburger" onclick="toggleNavigation(event)">
-            <span class="menu-text">Menu</span>
+      </div>
+    </div>
+    <div class="ambient-audio">
+      <button id="audioToggle" class="pill" aria-pressed="false">Enable Ambience</button>
+      <audio id="ambAudio" loop preload="auto">
+        <!-- Replace with a soft showroom ambient track -->
+        <source src="assets/ambient.mp3" type="audio/mpeg"/>
+      </audio>
+      <small class="muted">Subtle ambience; user‑controlled</small>
+    </div>
+  </main>
+
+  <!-- Mood-based navigation + Product Gallery -->
+  <section id="moods" class="section container">
+    <div class="section-head">
+      <div>
+        <h2>Curate by mood</h2>
+        <p>Let the feeling lead. Evening Reserve. Modern Heirloom. Quiet Icon.</p>
+      </div>
+      <div class="mood-nav" role="toolbar" aria-label="Mood filters">
+        <button class="pill mood-filter" data-mood="all" aria-pressed="true">All</button>
+        <button class="pill mood-filter" data-mood="evening-reserve">Evening Reserve</button>
+        <button class="pill mood-filter" data-mood="modern-heirloom">Modern Heirloom</button>
+        <button class="pill mood-filter" data-mood="quiet-icon">Quiet Icon</button>
+      </div>
+    </div>
+
+    <div class="grid" id="productGrid">
+      <!-- Product card template samples -->
+      <article class="product" data-mood="evening-reserve">
+        <div class="product-media">
+          <img src="assets/products/classic-suit.jpg" alt="Classic Suit in deep onyx"/>
+          <div class="texture-zoom"><img src="assets/textures/wool.jpg" alt="Wool texture close-up"/></div>
+        </div>
+        <div class="product-body">
+          <div class="product-title">Classic Suit</div>
+          <div class="product-meta">Onyx | Super 120s Wool</div>
+        </div>
+      </article>
+
+      <article class="product" data-mood="modern-heirloom">
+        <div class="product-media">
+          <img src="assets/products/silk-blouse.jpg" alt="Silk blouse in ivory"/>
+          <div class="texture-zoom"><img src="assets/textures/silk.jpg" alt="Silk texture close-up"/></div>
+        </div>
+        <div class="product-body">
+          <div class="product-title">Ivory Silk Blouse</div>
+          <div class="product-meta">Pearl | Mulberry Silk</div>
+        </div>
+      </article>
+
+      <article class="product" data-mood="quiet-icon">
+        <div class="product-media">
+          <img src="assets/products/trench.jpg" alt="Camel trench coat"/>
+          <div class="texture-zoom"><img src="assets/textures/cotton-gabardine.jpg" alt="Cotton gabardine texture close-up"/></div>
+        </div>
+        <div class="product-body">
+          <div class="product-title">Camel Trench</div>
+          <div class="product-meta">Sand | Cotton Gabardine</div>
+        </div>
+      </article>
+
+      <article class="product" data-mood="modern-heirloom">
+        <div class="product-media">
+          <img src="assets/products/cashmere-knit.jpg" alt="Cashmere knit sweater"/>
+          <div class="texture-zoom"><img src="assets/textures/cashmere.jpg" alt="Cashmere texture close-up"/></div>
+        </div>
+        <div class="product-body">
+          <div class="product-title">Cashmere Knit</div>
+          <div class="product-meta">Fawn | Mongolian Cashmere</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Virtual Fitting Lounge -->
+  <section id="fitting" class="section container">
+    <div class="section-head">
+      <div>
+        <h2>Virtual fitting lounge</h2>
+        <p>Preview silhouettes, adjust fit, and receive pairings tuned to your city or season.</p>
+      </div>
+    </div>
+    <div class="fitting">
+      <div class="fitting-viewport">
+        <div class="mannequin">
+          <img id="mannequinImg" src="assets/mannequin/regular-black.png" alt="Mannequin wearing selection"/>
+        </div>
+      </div>
+      <div class="fit-controls">
+        <div class="control">
+          <strong>Silhouette</strong>
+          <div class="segmented" role="group" aria-label="Silhouette">
+            <button data-sil="slim">Slim</button>
+            <button data-sil="regular" aria-pressed="true">Regular</button>
+            <button data-sil="relaxed">Relaxed</button>
           </div>
-          <ul>
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li>
-              <a href="#collections">Collections</a>
-            </li>
-            <li>
-              <a href="#new-arrivals">New Arrivals</a>
-            </li>
-            <li>
-              <a href="#vip">VIP Lounge</a>
-            </li>
-            <li>
-              <a href="#offers">Exclusive Offers</a>
-            </li>
-          </ul>
-        </nav><button class="cta-button">Shop Now</button>
-      </div>
-    </header>
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <h1>Luxury Redefined</h1>
-        <p>Experience the essence of elegance and sophistication.</p><button class="cta-button">Discover More</button>
-      </div>
-    </section>
-    <section class="products container parallax" id="collections" data-speed="0.2">
-      <h1>Featured Collection</h1>
-      <div class="product-item">
-        <div class="product-image"><img src="Signature dress.png" alt="Signature Dress" style="width:100%; height:auto;"></div>
-        <div class="product-details">
-          <h2>Signature Dress</h2>
-          <p>Crafted with meticulous detail and a modern flair, this dress epitomizes luxury. Its seamless blend of traditional tailoring and contemporary style sets a new standard in fashion.</p><a href="signature dress.html" class="btn">View Details</a>
+        </div>
+
+        <div class="control">
+          <strong>Size</strong>
+          <div class="segmented" role="group" aria-label="Size">
+            <button data-size="S">S</button>
+            <button data-size="M" aria-pressed="true">M</button>
+            <button data-size="L">L</button>
+          </div>
+        </div>
+
+        <div class="control">
+          <strong>Tone</strong>
+          <div class="segmented" role="group" aria-label="Tone">
+            <button data-tone="black" aria-pressed="true">Black</button>
+            <button data-tone="navy">Navy</button>
+            <button data-tone="camel">Camel</button>
+          </div>
+        </div>
+
+        <div class="pairings" id="pairings">
+          Suggested pairings appear here based on silhouette and tone.
         </div>
       </div>
-      <div class="product-item">
-        <div class="product-image"><img src="classic suit.jfif" alt="Classic Suit" style="width:100%; height:auto;"></div>
-        <div class="product-details">
-          <h2>Classic Suit</h2>
-          <p>This suit merges modern tailoring with timeless elegance, offering versatility for any refined occasion.</p><a href="#" class="btn">View Details</a>
+    </div>
+  </section>
+
+  <!-- Sillage: Signature Fragrance Simulation -->
+  <section class="section container">
+    <div class="sillage">
+      <div class="scent-orbs" aria-hidden="true" id="scentOrbs"></div>
+      <h2>Sillage No. 01 — First Light</h2>
+      <p class="muted">Tuscan dawn on silk. Cedar in the wings. A hush like velvet.</p>
+      <div class="spacer-s"></div>
+      <p>Notes of bergamot drift beneath the hemline, a whisper of orris and cashmere musk trailing as you turn. Not a scent. A presence.</p>
+    </div>
+  </section>
+
+  <!-- Editorial Journal -->
+  <section id="journal" class="section container">
+    <div class="section-head">
+      <div>
+        <h2>Design philosophy journal</h2>
+        <p>On restraint, line, and the patience of craftsmanship.</p>
+      </div>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-media" style="background:url('assets/journal/lines.jpg') center/cover"></div>
+        <div class="card-body">
+          <h3>The grace of negative space</h3>
+          <p class="muted">Why leaving room to breathe reveals the truest silhouette.</p>
         </div>
+      </article>
+      <article class="card">
+        <div class="card-media" style="background:url('assets/journal/tailor.jpg') center/cover"></div>
+        <div class="card-body">
+          <h3>Time is a material</h3>
+          <p class="muted">On fittings, patience, and garments that earn soft edges.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media" style="background:url('assets/journal/palette.jpg') center/cover"></div>
+        <div class="card-body">
+          <h3>Palette of quiet</h3>
+          <p class="muted">A case for a life in onyx, pearl, fawn, and smoke.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Behind-the-Fabric Visual Essay -->
+  <section class="section container">
+    <div class="essay">
+      <video id="essayVideo" muted playsinline preload="auto" poster="assets/essay/poster.jpg">
+        <source src="assets/essay/process.mp4" type="video/mp4"/>
+      </video>
+      <div class="essay-steps">
+        <div class="step is-active"><span class="tag"> Atelier </span><h3>Hands memorize the cloth.</h3><p class="muted">Needles move like metronomes of care.</p></div>
+        <div class="step"><span class="tag"> Pattern </span><h3>Lines breathe into shape.</h3><p class="muted">Paper to muslin, muslin to memory.</p></div>
+        <div class="step"><span class="tag"> Finish </span><h3>Edges learn restraint.</h3><p class="muted">Seams cleaned to a whisper.</p></div>
       </div>
-    </section>
-    <section class="vip-section parallax" id="vip" data-speed="0.3">
-      <div class="container">
-        <h2>Join Our VIP Lounge</h2>
-        <p>Unlock exclusive offers, early access to collections, and personal styling sessions by joining our elite circle.</p><button class="cta-button">Become a VIP</button>
+    </div>
+  </section>
+
+  <!-- Provenance Stories -->
+  <section id="provenance" class="section container">
+    <div class="section-head">
+      <div>
+        <h2>Provenance</h2>
+        <p>Materials with stories—wool from the hills, silk from patient hands.</p>
       </div>
-    </section>
-    <section class="checkout container parallax" id="checkout" data-speed="0.2">
-      <h2>Streamlined Checkout</h2>
-      <form action="#" method="post">
-        <input type="text" name="fullname" placeholder="Full Name" required=""> <input type="email" name="email" placeholder="Email Address" required=""> <input type="text" name="address" placeholder="Shipping Address" required=""> <select name="country" required="">
-          <option value="">
-            Select Country
-          </option>
-          <option value="india">
-            India
-          </option>
-          <option value="usa">
-            USA
-          </option>
-          <option value="uk">
-            UK
-          </option>
-        </select> <input type="text" name="card" placeholder="Card Number" required=""> <input type="text" name="expiry" placeholder="Expiry Date (MM/YY)" required=""> <input type="text" name="cvv" placeholder="CVV" required=""> <button type="submit">Complete Purchase</button>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-media" style="background:url('assets/provenance/wool.jpg') center/cover"></div>
+        <div class="card-body">
+          <h3>Super 120s Merino</h3>
+          <p class="muted">Spun in Biella, finished in Como—clarity and drape that resists time.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media" style="background:url('assets/provenance/silk.jpg') center/cover"></div>
+        <div class="card-body">
+          <h3>Mulberry Silk</h3>
+          <p class="muted">Filaments drawn with care; a pearl sheen in low light.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media" style="background:url('assets/provenance/cashmere.jpg') center/cover"></div>
+        <div class="card-body">
+          <h3>Mongolian Cashmere</h3>
+          <p class="muted">Gathered in thaw, combed not shorn; warmth without weight.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- VIP Lounge -->
+  <section id="vip" class="section container">
+    <div class="panel">
+      <h2>Join our VIP lounge</h2>
+      <p class="muted">Early access, private previews, and personal styling notes.</p>
+      <div class="spacer-s"></div>
+      <form id="vipForm" class="form" autocomplete="one-time-code">
+        <input type="text" name="name" placeholder="Full name" required/>
+        <input type="email" name="email" placeholder="Email" required/>
+        <select name="city" required>
+          <option value="">City</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+          <option>Bengaluru</option>
+          <option>New York</option>
+          <option>London</option>
+        </select>
+        <button class="btn gold" type="submit">Become VIP</button>
+        <span class="hint">We write rarely, with intention.</span>
       </form>
-    </section>
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 LUXENOVA. All Rights Reserved.</p>
+    </div>
+  </section>
+
+  <!-- Trunk Show RSVP -->
+  <section id="rsvp" class="section container">
+    <div class="panel">
+      <h2>Trunk show RSVP</h2>
+      <p class="muted">Private viewings—atelier conversations over tea.</p>
+      <div class="spacer-s"></div>
+      <form id="rsvpForm" class="form">
+        <input type="text" name="guest" placeholder="Your name" required/>
+        <input type="email" name="email" placeholder="Email" required/>
+        <select name="location" required>
+          <option value="">Preferred location</option>
+          <option>Mumbai</option>
+          <option>Paris</option>
+          <option>New York</option>
+          <option>Milan</option>
+        </select>
+        <input type="date" name="date" required/>
+        <textarea name="notes" rows="3" placeholder="Styling preferences (optional)"></textarea>
+        <button class="btn" type="submit">Request Invitation</button>
+        <span class="hint">Confirmations are limited; we’ll be in touch.</span>
+      </form>
+    </div>
+  </section>
+
+  <!-- Checkout -->
+  <section id="checkout" class="section container">
+    <div class="panel">
+      <h2>Streamlined checkout</h2>
+      <p class="muted">A gentle finish—clarity at every step.</p>
+      <div class="spacer-s"></div>
+      <form id="checkoutForm" class="form">
+        <input name="fullname" placeholder="Full name" required/>
+        <input type="email" name="email" placeholder="Email address" required/>
+        <input name="address" placeholder="Shipping address" required/>
+        <div class="grid" style="grid-template-columns:repeat(12,1fr);gap:10px;">
+          <select name="country" style="grid-column:span 4" required>
+            <option value="">Country</option>
+            <option>India</option><option>USA</option><option>UK</option>
+          </select>
+          <input name="card" placeholder="Card number" style="grid-column:span 8" inputmode="numeric" maxlength="19" required/>
+          <input name="expiry" placeholder="Expiry (MM/YY)" style="grid-column:span 6" required/>
+          <input name="cvv" placeholder="CVV" style="grid-column:span 6" inputmode="numeric" maxlength="4" required/>
+        </div>
+        <button class="btn gold" type="submit">Complete Purchase</button>
+        <span class="hint">Encrypted and private. Taxes and duties calculated at checkout.</span>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="spacer-s"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <small>&copy; 2025 LUXENOVA. All rights reserved.</small>
+        <small class="muted">Crafted for a life well-considered.</small>
       </div>
-    </footer>
-    <script>
-    // Mobile Menu Toggle
-    document.getElementById("menuToggle").addEventListener("click", function() {
-      document.getElementById("navList").classList.toggle("active");
+    </div>
+  </footer>
+
+  <!-- Concierge -->
+  <button class="concierge-btn" id="openConcierge" aria-controls="concierge" aria-expanded="false">Concierge</button>
+  <aside id="concierge" class="concierge" role="dialog" aria-modal="false" aria-label="LUXENOVA Concierge">
+    <header>
+      <strong>Personal Concierge</strong>
+      <button id="closeConcierge" class="pill">Close</button>
+    </header>
+    <div id="chat" class="chat" aria-live="polite"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Share your taste or ask for guidance…" aria-label="Message"/>
+      <button id="sendMsg" class="pill">Send</button>
+    </div>
+  </aside>
+
+  <script>
+    // Header shrink and mobile menu
+    const hdr = document.getElementById('hdr');
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      hdr.style.background = y > 20 ? 'color-mix(in oklab, var(--bg) 85%, transparent)' : 'color-mix(in oklab, var(--bg) 70%, transparent)';
+      hdr.style.transform = y > lastY && y > 120 ? 'translateY(-100%)' : 'translateY(0)';
+      lastY = y;
     });
 
-    // Global scroll event handler to create a full-site parallax effect
-    window.addEventListener('scroll', function() {
-      const scrollPos = window.pageYOffset;
-      
-      // Update hero section effects (text movement and brightness)
-      const heroContent = document.querySelector('.hero-content');
-      if (heroContent) {
-        heroContent.style.transform = 'translateY(' + (-scrollPos * 0.5) + 'px)';
-      }
-      const heroSection = document.querySelector('.hero');
-      if (heroSection) {
-        const brightness = Math.max(0.7, 1 - scrollPos / 1000);
-        heroSection.style.filter = 'brightness(' + brightness + ')';
-      }
-      
-      // Apply parallax background effect to all sections with the "parallax" class (except the hero)
-      document.querySelectorAll('section.parallax:not(.hero)').forEach(function(section) {
-        const speed = parseFloat(section.getAttribute('data-speed')) || 0.2;
-        section.style.backgroundPositionY = -(scrollPos * speed) + 'px';
-      });
-      
-      // Apply a subtle upward movement to text across all sections (excluding hero)
-      document.querySelectorAll('section:not(.hero) h1, section:not(.hero) h2, section:not(.hero) h3, section:not(.hero) p, section:not(.hero) a, section:not(.hero) li, section:not(.hero) span')
-        .forEach(function(el) {
-          el.style.transform = 'translateY(' + (-scrollPos * 0.02) + 'px)';
-      });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger?.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.hidden = expanded;
     });
-    </script>
+
+    // Ambient audio toggle
+    const ambAudio = document.getElementById('ambAudio');
+    const audioToggle = document.getElementById('audioToggle');
+    let audioEnabled = false;
+    audioToggle.addEventListener('click', async () => {
+      try {
+        if (!audioEnabled) { await ambAudio.play(); audioEnabled = true; audioToggle.setAttribute('aria-pressed','true'); audioToggle.textContent = 'Disable Ambience'; }
+        else { ambAudio.pause(); audioEnabled = false; audioToggle.setAttribute('aria-pressed','false'); audioToggle.textContent = 'Enable Ambience'; }
+      } catch(e) { /* ignored: user gesture or no source */ }
+    });
+
+    // Light mode toggle
+    const modeToggle = document.getElementById('modeToggle');
+    const modeToggleMobile = document.getElementById('modeToggleMobile');
+    function setTheme(mode) {
+      document.documentElement.setAttribute('data-theme', mode);
+      const pressed = mode === 'showroom';
+      modeToggle?.setAttribute('aria-pressed', pressed);
+      modeToggleMobile?.setAttribute('aria-pressed', pressed);
+      if (modeToggle) modeToggle.textContent = pressed ? 'Evening Mode' : 'Showroom Light';
+      if (modeToggleMobile) modeToggleMobile.textContent = pressed ? 'Evening Mode' : 'Showroom Light';
+      localStorage.setItem('lx_theme', mode);
+    }
+    const savedTheme = localStorage.getItem('lx_theme');
+    if (savedTheme) setTheme(savedTheme);
+    modeToggle?.addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-theme') === 'evening' ? 'showroom' : 'evening'));
+    modeToggleMobile?.addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-theme') === 'evening' ? 'showroom' : 'evening'));
+
+    // Cinematic hero parallax
+    const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroContent.style.transform = `translateY(${Math.min(0, -y * 0.25)}px)`;
+      hero.style.filter = `brightness(${Math.max(0.7, 1 - y/1200)})`;
+    });
+
+    // Cursor shimmer (luxe micro-interaction)
+    const shimmer = document.getElementById('cursorShimmer');
+    let shimmerTimeout;
+    window.addEventListener('pointermove', (e) => {
+      shimmer.style.left = e.clientX + 'px';
+      shimmer.style.top = e.clientY + 'px';
+      shimmer.style.opacity = .9;
+      shimmer.style.transform = 'translate(-50%, -50%) scale(1.1)';
+      clearTimeout(shimmerTimeout);
+      shimmerTimeout = setTimeout(() => { shimmer.style.opacity = .0; shimmer.style.transform = 'translate(-50%, -50%) scale(.9)'; }, 160);
+    });
+
+    // Mood filters
+    const grid = document.getElementById('productGrid');
+    const filters = document.querySelectorAll('.mood-filter');
+    filters.forEach(btn => btn.addEventListener('click', () => {
+      filters.forEach(b => b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true');
+      const mood = btn.dataset.mood;
+      grid.querySelectorAll('.product').forEach(card => {
+        card.style.display = (mood === 'all' || card.dataset.mood === mood) ? '' : 'none';
+      });
+    }));
+
+    // Virtual fitting lounge logic
+    const mannequinImg = document.getElementById('mannequinImg');
+    const pairings = document.getElementById('pairings');
+    let fit = { sil: 'regular', size: 'M', tone: 'black' };
+    function updateMannequin() {
+      mannequinImg.src = `assets/mannequin/${fit.sil}-${fit.tone}.png`;
+      const recs = [];
+      if (fit.sil === 'slim') recs.push('Sharp lapel suit', 'Minimalist belt');
+      if (fit.sil === 'regular') recs.push('Double-pleat trouser', 'Silk-cashmere scarf');
+      if (fit.sil === 'relaxed') recs.push('Unstructured blazer', 'Soft loafer');
+      if (fit.tone === 'camel') recs.push('Ivory silk blouse');
+      if (fit.tone === 'navy') recs.push('Graphite knit');
+      if (fit.tone === 'black') recs.push('Onyx turtleneck');
+      pairings.textContent = `For ${fit.sil} in ${fit.tone}, consider: ${recs.slice(0,3).join(' • ')}.`;
+      localStorage.setItem('lx_fit', JSON.stringify(fit));
+    }
+    document.querySelectorAll('[data-sil]').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('[data-sil]').forEach(x => x.removeAttribute('aria-pressed'));
+      b.setAttribute('aria-pressed','true'); fit.sil = b.dataset.sil; updateMannequin();
+    }));
+    document.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('[data-size]').forEach(x => x.removeAttribute('aria-pressed'));
+      b.setAttribute('aria-pressed','true'); fit.size = b.dataset.size; updateMannequin();
+    }));
+    document.querySelectorAll('[data-tone]').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('[data-tone]').forEach(x => x.removeAttribute('aria-pressed'));
+      b.setAttribute('aria-pressed','true'); fit.tone = b.dataset.tone; updateMannequin();
+    }));
+    const savedFit = localStorage.getItem('lx_fit');
+    if (savedFit) { fit = JSON.parse(savedFit); document.querySelectorAll('[data-sil]').forEach(b => b.setAttribute('aria-pressed', b.dataset.sil === fit.sil)); document.querySelectorAll('[data-size]').forEach(b => b.setAttribute('aria-pressed', b.dataset.size === fit.size)); document.querySelectorAll('[data-tone]').forEach(b => b.setAttribute('aria-pressed', b.dataset.tone === fit.tone)); }
+    updateMannequin();
+
+    // Sillage orbs
+    const orbs = document.getElementById('scentOrbs');
+    for (let i=0; i<14; i++){
+      const o = document.createElement('div');
+      o.className = 'orb';
+      o.style.left = Math.random()*100+'%';
+      o.style.top = (10+Math.random()*80)+'%';
+      o.style.animationDelay = (Math.random()*6)+'s';
+      o.style.animationDuration = (7+Math.random()*6)+'s';
+      o.style.opacity = .15 + Math.random() * .15;
+      orbs.appendChild(o);
+    }
+
+    // Visual essay: activate steps on scroll, play/pause video
+    const steps = document.querySelectorAll('.step');
+    const essayVideo = document.getElementById('essayVideo');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-active');
+      });
+    }, { rootMargin: '0px 0px -40% 0px', threshold: .1 });
+    steps.forEach(s => io.observe(s));
+    const essayIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) essayVideo.play().catch(()=>{});
+        else essayVideo.pause();
+      });
+    }, { threshold: .4 });
+    essayIo.observe(document.querySelector('.essay'));
+
+    // VIP, RSVP, Checkout forms (demo only)
+    function toast(msg){
+      const t = document.createElement('div');
+      t.textContent = msg;
+      t.style.position = 'fixed'; t.style.left = '50%'; t.style.bottom = '24px'; t.style.transform = 'translateX(-50%)';
+      t.style.background = 'linear-gradient(135deg, var(--accent), var(--accent-2))'; t.style.color = '#1E1A12';
+      t.style.padding = '10px 14px'; t.style.borderRadius = '999px'; t.style.zIndex = 1500;
+      document.body.appendChild(t); setTimeout(()=> t.remove(), 2400);
+    }
+    document.getElementById('vipForm').addEventListener('submit', (e) => { e.preventDefault(); const data = new FormData(e.target); localStorage.setItem('lx_vip', JSON.stringify(Object.fromEntries(data))); toast('Welcome to VIP.'); e.target.reset(); });
+    document.getElementById('rsvpForm').addEventListener('submit', (e) => { e.preventDefault(); toast('RSVP received. We’ll be in touch.'); e.target.reset(); });
+    document.getElementById('checkoutForm').addEventListener('submit', (e) => { e.preventDefault(); toast('Order confirmed (demo).'); });
+
+    // Concierge chat
+    const concierge = document.getElementById('concierge');
+    const openBtn = document.getElementById('openConcierge');
+    const closeBtn = document.getElementById('closeConcierge');
+    const chat = document.getElementById('chat');
+    const chatInput = document.getElementById('chatInput');
+    const sendMsg = document.getElementById('sendMsg');
+
+    function conciergeOpen(open){
+      concierge.style.display = open ? 'grid' : 'none';
+      openBtn.setAttribute('aria-expanded', String(open));
+      if (open) chatInput.focus();
+    }
+    openBtn.addEventListener('click', () => conciergeOpen(concierge.style.display !== 'grid'));
+    closeBtn.addEventListener('click', () => conciergeOpen(false));
+
+    function addBubble(text, me=false){
+      const b = document.createElement('div');
+      b.className = 'bubble' + (me ? ' me' : '');
+      b.textContent = text;
+      chat.appendChild(b);
+      chat.scrollTop = chat.scrollHeight;
+    }
+    function conciergeGreet(){
+      const vip = JSON.parse(localStorage.getItem('lx_vip') || 'null');
+      addBubble(`Welcome${vip?.name ? ', ' + vip.name : ''}. Tell me your mood: Evening Reserve, Modern Heirloom, or Quiet Icon?`);
+    }
+    conciergeGreet();
+
+    function replyTo(msg){
+      const m = msg.toLowerCase();
+      if (m.includes('evening')) return 'For Evening Reserve: onyx suit, silk blouse, graphite knit.';
+      if (m.includes('heirloom')) return 'Modern Heirloom leans ivory silk and camel trench with pearl accents.';
+      if (m.includes('quiet') || m.includes('icon')) return 'Quiet Icon: camel trench, fawn cashmere, unstructured blazer.';
+      if (m.includes('size')) return 'Tell me S, M, or L and silhouette preference; I’ll refine recommendations.';
+      if (m.includes('rsvp')) return 'I can guide you to the Trunk Show RSVP below. Dates are limited.';
+      return 'Noted. Would you like curation by mood, silhouette, or occasion?';
+    }
+
+    function handleSend(){
+      const val = chatInput.value.trim();
+      if (!val) return;
+      addBubble(val, true);
+      chatInput.value = '';
+      setTimeout(()=> addBubble(replyTo(val)), 500);
+    }
+    sendMsg.addEventListener('click', handleSend);
+    chatInput.addEventListener('keydown', (e)=>{ if (e.key === 'Enter') handleSend(); });
+
+    // Restore theme quickly on load (prevent flash)
+    (function setInitialTheme(){
+      const t = localStorage.getItem('lx_theme'); if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
 </body>
 </html>
