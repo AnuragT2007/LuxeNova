@@ -1,2 +1,3 @@
-# LuxeNova
-LuxeNova redefines luxury with a modern touch, crafting timeless, sophisticated fashion. Blending premium fabrics with innovative designs, it creates bold yet refined pieces. Each garment embodies elegance, exclusivity, and prestige, catering to trendsetters who value artistry and innovation.
+# VERTU
+VERTU is one place for elite class to get all their stuff altogether. They are just one step to get their cards swiped
+
